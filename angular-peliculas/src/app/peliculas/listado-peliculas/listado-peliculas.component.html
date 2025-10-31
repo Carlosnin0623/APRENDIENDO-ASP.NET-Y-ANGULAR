@@ -1,0 +1,39 @@
+@if(!peliculas){
+
+<img src="Imagenes/Loading.gif">
+}
+@else if(peliculas.length === 0){
+<div>
+  <p>No hay elementos para mostrar</p>
+</div>
+}
+@else{
+   @for (pelicula of peliculas; track $index){
+    <div class="contenedor-pelicula">
+       <div style="display: flex; flex-direction: row; gap: 10px;">
+         <div>
+      <!-- [src] Esta es la forma de mostrar imagenes usando angujar -->
+      <!-- <img [src]="pelicula.poster" width="169" height="250"> -->
+      <!-- Si queremos usar la directiva ngOptimizedImage que permite que la imagenes 
+       se vayan descargando a medida que el usuarios hacer scroll y no carga todas las imagenes
+       de golpe y el priority es para que la primera imagen tenga prioridad para mostrarse
+       y eso lo hacemos con el indice, le decimos que priorice la imagen con le indice 0-->
+
+            <img [ngSrc]="pelicula.poster" [priority]="$index === 0" width="169" height="250">
+
+        </div>
+       <div>
+         <p>{{$index}}) El nombre de la pelicula es {{pelicula.titulo | uppercase}}</p>
+
+         <p>fue lanzada en el año {{pelicula.fechaLanzamiento | date: "dd-MMMM-yyyy" | uppercase}}</p>
+
+         <p>El precio en dolar {{pelicula.precio | currency}}</p>
+
+         <p>El precio en pesos Dominicanos {{pelicula.precio | currency: "RD$"}}</p>
+       </div>
+
+     </div>
+
+  </div>
+  }
+}
