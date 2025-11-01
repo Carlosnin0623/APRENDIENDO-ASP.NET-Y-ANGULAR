@@ -1,3 +1,6 @@
+
+<button (click)="agregarPelicula()">AgregarPelicula</button>
+
 @if(!peliculas){
 
 <img src="Imagenes/Loading.gif">
@@ -30,6 +33,7 @@
          <p>El precio en dolar {{pelicula.precio | currency}}</p>
 
          <p>El precio en pesos Dominicanos {{pelicula.precio | currency: "RD$"}}</p>
+         <button (click)="remover(pelicula)">Remover</button>
        </div>
 
      </div>
