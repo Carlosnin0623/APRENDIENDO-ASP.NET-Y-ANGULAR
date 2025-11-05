@@ -25,7 +25,9 @@
           <p>El precio en dolar {{pelicula.precio | currency}}</p>
 
           <p>El precio en pesos Dominicanos {{pelicula.precio | currency: "RD$"}}</p>
-          <button (click)="remover(pelicula)">Remover</button>
+          <button mat-flat-button (click)="remover(pelicula)">
+            <mat-icon>delete</mat-icon>
+            Remover</button>
         </div>
 
       </div>

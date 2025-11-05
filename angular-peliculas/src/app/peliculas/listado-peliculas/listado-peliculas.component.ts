@@ -1,11 +1,12 @@
 import { Component, Input, input, OnInit } from '@angular/core';
 import {DatePipe, NgOptimizedImage, CurrencyPipe, UpperCasePipe} from '@angular/common'
 import { ListadoGenericoComponent } from '../../compartidos/componentes/listado-generico/listado-generico.component';
-import { ɵEmptyOutletComponent } from "@angular/router";
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-listado-peliculas',
-  imports: [DatePipe, NgOptimizedImage, CurrencyPipe, UpperCasePipe, ListadoGenericoComponent],
+  imports: [DatePipe, NgOptimizedImage, CurrencyPipe, UpperCasePipe, ListadoGenericoComponent, MatButtonModule, MatIconModule],
   templateUrl: './listado-peliculas.component.html',
   styleUrl: './listado-peliculas.component.css'
 })

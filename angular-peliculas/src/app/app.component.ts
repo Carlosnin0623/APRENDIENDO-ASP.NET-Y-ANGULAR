@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
+import { MenuComponent } from "./compartidos/componentes/menu/menu.component";
+import { RatingComponent } from "./compartidos/componentes/rating/rating.component";
 
 
 @Component({
@@ -12,7 +14,7 @@ import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado
    NgFor: Si queremos recorrer con la directiva anterior que usaba Angular es bueno conocerla
   
   */
-  imports: [ListadoPeliculasComponent],
+  imports: [ListadoPeliculasComponent, MenuComponent, RatingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -65,8 +67,8 @@ export class AppComponent implements OnInit {
   peliculasEnCines!: any[];
   peliculasProximosEstrenos!: any[];
 
-  clickBoton(){
-    alert("Haz hecho click en el botón");
+  procesarVoto(voto : number){
+    alert(`Calificación otorgada: ${voto}`)
   }
 }
 
