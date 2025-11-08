@@ -33,15 +33,16 @@ export class AppComponent implements OnInit {
         fechaLanzamiento: new Date('2016-05-03'),
         precio: 300.99,
         poster: 'https://upload.wikimedia.org/wikipedia/en/7/73/Moana_2_poster.jpg'
-      },
-      {
-        titulo: 'Bad Boys: Ride or Die',
-        fechaLanzamiento: new Date('2016-05-03'),
-        precio: 300.99,
-        poster: 'https://upload.wikimedia.org/wikipedia/en/8/8b/Bad_Boys_Ride_or_Die_%282024%29_poster.jpg'
-      }];
+      }
+      ];
 
       this.peliculasProximosEstrenos = [
+        {
+          titulo: 'Bad Boys: Ride or Die',
+          fechaLanzamiento: new Date('2016-05-03'),
+          precio: 300.99,
+          poster: 'https://upload.wikimedia.org/wikipedia/en/8/8b/Bad_Boys_Ride_or_Die_%282024%29_poster.jpg'
+        },
         {
           titulo: 'Deadpool & Wolverine',
           fechaLanzamiento: new Date('2016-05-03'),
@@ -68,7 +69,7 @@ export class AppComponent implements OnInit {
   peliculasEnCines!: any[];
   peliculasProximosEstrenos!: any[];
 
-  procesarVoto(voto : number){
+  procesarVoto(voto: number) {
     alert(`Calificación otorgada: ${voto}`)
   }
 }

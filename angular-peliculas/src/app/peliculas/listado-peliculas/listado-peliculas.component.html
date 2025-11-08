@@ -1,4 +1,3 @@
-
 <!--
 <button (click)="agregarPelicula()">AgregarPelicula</button>
 -->
@@ -7,37 +6,29 @@
 <app-listado-generico [listado]="peliculas">
 
   <ng-container contenido>
-    @for (pelicula of peliculas; track $index){
-    <div class="contenedor-pelicula">
-      <div style="display: flex; flex-direction: row; gap: 10px;">
+
+    <div class="peliculas-contenedor">
+      @for(pelicula of peliculas; track $index){
+      <div class="pelicula-contenedor">
+        <a>
+          @if(pelicula.poster){
+          <img [src]="pelicula.poster" width="169" height="259" />
+          }@else{
+          <img src="default.jpg" width="169" height="259" />
+          }
+        </a>
+        <p>
+          <a>{{pelicula.titulo}}</a> 
+        </p>
         <div>
-          <!-- [src] Esta es la forma de mostrar imagenes usando angujar -->
-          <!-- <img [src]="pelicula.poster" width="169" height="250"> -->
-          <!-- Si queremos usar la directiva ngOptimizedImage que permite que la imagenes 
-       se vayan descargando a medida que el usuarios hacer scroll y no carga todas las imagenes
-       de golpe y el priority es para que la primera imagen tenga prioridad para mostrarse
-       y eso lo hacemos con el indice, le decimos que priorice la imagen con le indice 0-->
-
-          <img [ngSrc]="pelicula.poster" [priority]="$index === 0" width="169" height="250">
-
-        </div>
-        <div>
-          <p>{{$index}}) El nombre de la pelicula es {{pelicula.titulo | uppercase}}</p>
-
-          <p>fue lanzada en el año {{pelicula.fechaLanzamiento | date: "dd-MMMM-yyyy" | uppercase}}</p>
-
-          <p>El precio en dolar {{pelicula.precio | currency}}</p>
-
-          <p>El precio en pesos Dominicanos {{pelicula.precio | currency: "RD$"}}</p>
-          <button mat-flat-button (click)="remover(pelicula)">
-            <mat-icon>delete</mat-icon>
-            Remover</button>
+          <a mat-flat-button>Editar</a>
+          <button mat-flat-button type="button" class="warn">Borrar</button>
         </div>
 
       </div>
-
+      }
     </div>
-    }
+
   </ng-container>
 
 </app-listado-generico>
