@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
 import { MenuComponent } from "./compartidos/componentes/menu/menu.component";
 import { RatingComponent } from "./compartidos/componentes/rating/rating.component";
+import { MatButtonModule } from "@angular/material/button";
 
 
 @Component({
@@ -14,7 +15,7 @@ import { RatingComponent } from "./compartidos/componentes/rating/rating.compone
    NgFor: Si queremos recorrer con la directiva anterior que usaba Angular es bueno conocerla
   
   */
-  imports: [ListadoPeliculasComponent, MenuComponent, RatingComponent],
+  imports: [ListadoPeliculasComponent, MenuComponent, MatButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
