@@ -31,15 +31,9 @@
 <button mat-flat-button class="warn">Warn</button>
 -->
 
+<h1>Este es un mensaje que estara en cada página</h1>
 
 
 <div class="contenedor">
-    <h2>En cines</h2>
-
-    <app-listado-peliculas [peliculas]="peliculasEnCines"></app-listado-peliculas>
-
-    <h2>Próximos Estrenos</h2>
-
-    <app-listado-peliculas [peliculas]="peliculasProximosEstrenos"></app-listado-peliculas>
-
+  <router-outlet></router-outlet>
 </div>

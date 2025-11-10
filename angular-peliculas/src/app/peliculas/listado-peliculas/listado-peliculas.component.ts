@@ -38,20 +38,4 @@ export class ListadoPeliculasComponent {
 @Input({required: true})
 peliculas!: any[];
 
-agregarPelicula(){
-  this.peliculas.push({
-    titulo: 'Inception',
-    fechaLanzamiento: new Date('2017-07-03'),
-    precio: 500,
-    poster: 'https://jkfenner.com/wp-content/uploads/2019/11/default.jpg'
-  });
-}
-
-remover(pelicula : any){
-  const indice = this.peliculas.findIndex((peliculaActual : any) => peliculaActual.titulo === pelicula.titulo );
-
-  this.peliculas.splice(indice, 1);
-}
-
-
 }
