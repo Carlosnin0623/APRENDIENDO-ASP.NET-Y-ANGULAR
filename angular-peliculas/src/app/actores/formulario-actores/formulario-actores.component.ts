@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 import { ActorCreacionDTO, ActorDTO } from '../actores';
-import { primeraLetraMayuscula } from '../../compartidos/funciones/validaciones';
+import { fechaNoPuedeSerFutura, primeraLetraMayuscula } from '../../compartidos/funciones/validaciones';
 import moment from 'moment';
 
 @Component({
@@ -33,9 +33,13 @@ export class FormularioActoresComponent implements OnInit {
 
   form = this.formBuilder.group({
     nombre: ['', { validators: [Validators.required, primeraLetraMayuscula()] }],
-    fechaNacimiento: new FormControl<Date | null>(null)
+    fechaNacimiento: new FormControl<Date | null>(null, {
+      validators: [Validators.required, fechaNoPuedeSerFutura()]
+    })
   });
 
+
+ // Errores en campos
 
   obtenerErrorCampoNombre(): string {
     let nombre = this.form.controls.nombre;
@@ -46,6 +50,20 @@ export class FormularioActoresComponent implements OnInit {
 
     if (nombre.hasError('primeraLetraMayuscula')) {
       return nombre.getError('primeraLetraMayuscula').mensaje
+    }
+
+    return "";
+  }
+
+  obtenerErrorCampoFechaNacimiento(): string{
+    let campo = this.form.controls.fechaNacimiento;
+
+     if (campo.hasError('required')) {
+      return "El campo Fecha Nacimiento es requerido";
+    }
+
+    if(campo.hasError('futuro')){
+      return campo.getError('futuro').mensaje;
     }
 
     return "";
