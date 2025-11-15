@@ -5,10 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule} from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { CineCreacionDTO } from '../cines';
+import { MapaComponent } from "../../compartidos/componentes/mapa/mapa.component";
 
 @Component({
   selector: 'app-formulario-cines',
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, RouterLink],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, RouterLink, MapaComponent],
   templateUrl: './formulario-cines.component.html',
   styleUrl: './formulario-cines.component.css'
 })
