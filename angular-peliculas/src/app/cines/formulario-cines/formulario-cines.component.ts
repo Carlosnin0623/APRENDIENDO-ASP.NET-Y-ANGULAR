@@ -1,11 +1,12 @@
 import { Component, EventEmitter, inject, Inject, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule} from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { CineCreacionDTO } from '../cines';
 import { MapaComponent } from "../../compartidos/componentes/mapa/mapa.component";
+import { Coordenada } from '../../compartidos/componentes/mapa/Coordenada';
 
 @Component({
   selector: 'app-formulario-cines',
@@ -17,6 +18,7 @@ export class FormularioCinesComponent implements OnInit {
   ngOnInit(): void {
     if (this.modelo !== undefined) {
       this.form.patchValue(this.modelo);
+      this.coordenadasIniciales.push({latitud: this.modelo.latitud, longitud: this.modelo.longitud});
     }
   }
 
@@ -26,10 +28,14 @@ export class FormularioCinesComponent implements OnInit {
   @Output()
   posteoFormulario = new EventEmitter<CineCreacionDTO>();
 
+  coordenadasIniciales: Coordenada[] = [];
+
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
-    nombre: ['', { validators: [Validators.required] }]
+    nombre: ['', { validators: [Validators.required] }],
+    latitud: new FormControl<number | null>(null, [Validators.required]),
+    longitud: new FormControl<number | null>(null, [Validators.required]),
   });
 
 
@@ -42,6 +48,10 @@ export class FormularioCinesComponent implements OnInit {
 
 
     return "";
+  }
+
+  coordenadaSeleccionada(coordenada: Coordenada){
+    this.form.patchValue(coordenada);
   }
 
   guardarCambios() {
